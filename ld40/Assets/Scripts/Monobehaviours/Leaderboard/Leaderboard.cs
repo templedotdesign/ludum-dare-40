@@ -39,14 +39,15 @@ public class Leaderboard : MonoBehaviour
         highScoreLog.text = "";
         if(highScoreList.Count == 0) {
             highScoreLog.text = "No Scores Recorded";
+        } else if(highScoreList.Count > 10) {
+            for (int i = 0; i < 10; i++)
+            {
+                highScoreLog.text += (i + 1) + ". " + highScoreList[i].username + " - " + highScoreList[i].score + '\n';
+            } 
         } else {
             for (int i = 0; i < highScoreList.Count; i++) {
                 highScoreLog.text += (i + 1) + ". " + highScoreList[i].username + " - " + highScoreList[i].score + '\n';
             }
         }
-    }
-
-    public void Refresh() {
-        DisplayHighScores(scoreData.highScoresList);
     }
 }
